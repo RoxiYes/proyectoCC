@@ -11,10 +11,10 @@ RUN pip3 install kafka-python
 #pip3 install --no-cache-dir -r /usr/src/app/requirements.txt
 
 # Copy files required for the app to run
-#COPY app.py /usr/src/app/
+COPY app.py /usr/src/app/
 
 # Declare the port number the container should expose
 EXPOSE 5000
 
 # Run the application
-#CMD ["python3", "/usr/src/app/app.py"]
+CMD ["python3", "/usr/src/app/app.py"]
