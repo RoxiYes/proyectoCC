@@ -14,7 +14,7 @@ class Producer(threading.Thread):
         self.stop_event.set()
 
     def run(self):
-        producer = KafkaProducer(bootstrap_servers='localhost:9092')
+        producer = KafkaProducer(bootstrap_servers='kafka:9092',api_version=(0, 10, 2))
 
         while not self.stop_event.is_set():
             producer.send('my-topic', b"test")
@@ -27,7 +27,7 @@ class Producer(threading.Thread):
 def main():
     # Create 'my-topic' Kafka topic
     try:
-        admin = KafkaAdminClient(bootstrap_servers='localhost:9092')
+        admin = KafkaAdminClient(bootstrap_servers='kafka:9092')
 
         topic = NewTopic(name='my-topic',
                          num_partitions=1,
